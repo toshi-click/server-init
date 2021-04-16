@@ -1,0 +1,25 @@
+# サーバー系共通処理後段
+- hosts: all
+  become: true
+  become_user: root
+  gather_facts: yes
+  roles:
+    - { role: "sudo" }
+    - { role: "common" }
+    - { role: "ansible" }
+    - { role: "dev_tool_install" }
+    - { role: "docker", when: docker_install, tags: docker }
+    - { role: "firewall", when: firewall, tags: firewall }
+    - { role: "package_control" }
+    - { role: "toshi_tools" }
+    - { role: "sshd" }
+  tasks:
+    # ipv6よりもipv4を優先する設定
+    # https://qastack.jp/ubuntu/32298/prefer-a-ipv4-dns-lookups-before-aaaaipv6-lookups
+    - name: put /etc/gai.conf file ipv6 than also ipv4 preferred preference
+      copy:
+        src: etc/gai.conf
+        dest: /etc/gai.conf
+        owner: root
+        group: root
+        mode: 0644

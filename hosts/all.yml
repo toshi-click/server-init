@@ -1,0 +1,14 @@
+all:
+  vars:
+    ansible_ssh_user: toshi
+    ansible_ssh_port: 22
+    ansible_python_interpreter: /usr/bin/python3
+    ansible_ssh_private_key_file: ~/.ssh/id_rsa
+  children:
+    localhost:
+#      vars:
+#        stage: "localhost"
+      children:
+        local:
+          hosts:
+            127.0.0.1: { }
