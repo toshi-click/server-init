@@ -2,3 +2,5 @@
 docker_install: true
 # firewallの設定をするのか
 firewall: true
+
+japanease: false
