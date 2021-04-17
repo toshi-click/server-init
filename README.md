@@ -1,6 +1,6 @@
 # server-init
 ```shell
-sudo apt install ansible
+sudo apt install -y ansible
 git clone https://github.com/toshi-click/server-init.git
 cd server-init
 ansible-galaxy install -r requirements.yml -p roles --force

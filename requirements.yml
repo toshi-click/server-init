@@ -38,8 +38,3 @@
   name: sudo
   scm: git
   version: "master"
-
-- src: https://github.com/toshi-click/roles_toshi_tools.git
-  name: toshi_tools
-  scm: git
-  version: "master"
